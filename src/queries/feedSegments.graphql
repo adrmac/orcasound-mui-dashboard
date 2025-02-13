@@ -1,0 +1,22 @@
+`
+{
+    feedSegments(
+      feedId: "feed_02u8r4ELz2xkCjPTc4yLWE",
+      filter: {startTime: {greaterThanOrEqual: "2024-12-02T23:36:38.760957Z"}, endTime: {lessThanOrEqual: "2024-12-03T23:56:38.760957Z"}}, sort: {field: START_TIME, order: DESC}, limit: 5) {
+      results {
+        startTime
+        endTime
+        duration
+        bucket
+        bucketRegion
+        cloudfrontUrl
+        fileName
+        playlistM3u8Path
+        playlistPath
+        playlistTimestamp
+        segmentPath
+        feedId
+      }
+    }
+  }
+`
