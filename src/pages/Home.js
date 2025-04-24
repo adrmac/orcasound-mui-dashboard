@@ -18,7 +18,7 @@ import { request, gql } from "graphql-request";
 import { useQuery } from "react-query";
 import '../orcasound.svg'
 import SearchIcon from "@mui/icons-material/Search";
-
+import { theme } from "..";
 
 // react-query
 const endpoint = "https://live.orcasound.net/graphiql/";
@@ -28,16 +28,20 @@ const ORCA_QUERY = gql`
   detections( limit:250 ) {
     results {
 			id
-      timestamp
+      feedId
+      listenerCount
       category
       description
-      listenerCount
+      playerOffset
+      playlistTimestamp
+      timestamp
+      candidate {
+       id
+      }
       feed {
         name
       }
-     candidate {
-       id
-     }
+
     }
   }
 }
@@ -92,7 +96,8 @@ export default function Home() {
         // preview-start
         <ReactRouterAppProvider
           navigation={NAVIGATION}
-          theme={demoTheme}
+          theme={theme}
+          defaultMode="dark"
           session={session}
           authentication={authentication}    
           branding={{
@@ -166,6 +171,9 @@ const NAVIGATION = [
 const demoTheme = createTheme({
   cssVariables: {
     colorSchemeSelector: 'data-toolpad-color-scheme',
+  },
+  palette: {
+    mode: 'dark'
   },
   colorSchemes: { light: true, dark: true },
   breakpoints: {

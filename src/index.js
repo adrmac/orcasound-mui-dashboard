@@ -21,7 +21,7 @@ import Candidates from './pages/Candidates';
 
 
 const client = new QueryClient();
-const theme = createTheme({
+export const theme = createTheme({
   typography: {
     fontFamily: [
       "Mukta",
@@ -42,11 +42,25 @@ const theme = createTheme({
       `
     }
   },
-  palette: {
-    primary: {
-      main: '#080D26'
-    }
-  }
+  cssVariables: {
+    colorSchemeSelector: 'data-toolpad-color-scheme',
+  },
+  colorSchemes: { light: true, dark: true },
+  // palette: {
+  //   mode: "dark",
+  //   primary: {
+  //     main: '#080D26',
+  //   }
+  // },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 600,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
 })
 
 const router = createBrowserRouter([
@@ -88,7 +102,7 @@ root.render(
   <React.StrictMode>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <QueryClientProvider client={client}>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme} defaultMode="dark">
           <RouterProvider router={router} />            
           </ThemeProvider>
         </QueryClientProvider>

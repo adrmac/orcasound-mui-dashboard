@@ -156,7 +156,7 @@ export default function Candidates() {
             </Box>
             <Stack spacing={3}>
             {candidates.map((el, index) => (
-            <Card index={el[0].timestamp}>
+            <Card key={el[0].timestamp}>
                 <CardActionArea>
                 <CardContent>
                    <Typography variant="h6" component="div" >
@@ -172,7 +172,8 @@ export default function Candidates() {
                 {["whale","vessel","other"].map(item => 
                     counts[index][item] ? counts[index][item] + "  " + item : null
                 ).filter(el => el !== null).join(" • ")}
-                {counts[index].descriptions ? (<div>{"Descriptions: " + counts[index].descriptions}</div>) : (<br />)}
+                <br />
+                {counts[index].descriptions ? (<span>{"Descriptions: " + counts[index].descriptions}</span>) : (<br />)}
                 </Typography>
                 </CardContent>
                 </CardActionArea>
